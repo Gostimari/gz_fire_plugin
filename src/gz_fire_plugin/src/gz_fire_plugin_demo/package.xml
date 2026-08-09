@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>gz_fire_plugin_demo</name>
+  <version>1.0.0</version>
+  <description>Demo worlds and launch files for gz_fire_plugin</description>
+  <maintainer email="you@example.com">Your Name</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>gz_fire_plugin</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

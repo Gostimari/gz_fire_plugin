@@ -1,0 +1,941 @@
+<?xml version="1.0"?>
+
+<sdf version="1.10">
+
+  <world name="fire_demo_world">
+
+    <!-- =========================================================
+         PHYSICS
+         ========================================================= -->
+
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+
+    <!-- =========================================================
+         GAZEBO HARMONIC SYSTEMS
+         ========================================================= -->
+
+    <plugin
+        filename="gz-sim-physics-system"
+        name="gz::sim::systems::Physics"/>
+
+    <plugin
+        filename="gz-sim-user-commands-system"
+        name="gz::sim::systems::UserCommands"/>
+
+    <plugin
+        filename="gz-sim-scene-broadcaster-system"
+        name="gz::sim::systems::SceneBroadcaster"/>
+
+    <plugin
+        filename="gz-sim-particle-emitter-system"
+        name="gz::sim::systems::ParticleEmitter"/>
+
+
+    <!-- =========================================================
+         LIGHT
+         ========================================================= -->
+
+    <light type="directional" name="sun">
+
+      <cast_shadows>true</cast_shadows>
+
+      <pose>0 0 8 0 0 0</pose>
+
+      <diffuse>0.75 0.75 0.75 1</diffuse>
+
+      <specular>0.10 0.10 0.10 1</specular>
+
+      <direction>-0.5 0.1 -0.9</direction>
+
+    </light>
+
+
+    <!-- =========================================================
+         GROUND
+         ========================================================= -->
+
+    <model name="ground_plane">
+
+      <static>true</static>
+
+      <link name="link">
+
+        <collision name="collision">
+
+          <geometry>
+
+            <plane>
+
+              <normal>0 0 1</normal>
+
+            </plane>
+
+          </geometry>
+
+        </collision>
+
+
+        <visual name="ground_visual">
+
+          <geometry>
+
+            <plane>
+
+              <normal>0 0 1</normal>
+
+              <size>50 50</size>
+
+            </plane>
+
+          </geometry>
+
+
+          <material>
+
+            <ambient>0.55 0.55 0.55 1</ambient>
+
+            <diffuse>0.65 0.65 0.65 1</diffuse>
+
+          </material>
+
+        </visual>
+
+      </link>
+
+    </model>
+
+
+    <!-- =========================================================
+         WOODEN TABLE
+         
+         THIS REPLACES target_cube
+         Model name = burnable_table
+         ========================================================= -->
+
+    <model name="burnable_table">
+
+      <static>true</static>
+
+      <pose>0 0 0 0 0 0</pose>
+
+
+      <link name="table_link">
+
+
+        <!-- =====================================================
+             TABLE TOP
+             ===================================================== -->
+
+        <collision name="tabletop_collision">
+
+          <pose>
+            0 0 0.82 0 0 0
+          </pose>
+
+          <geometry>
+
+            <box>
+
+              <size>
+                1.60 0.90 0.14
+              </size>
+
+            </box>
+
+          </geometry>
+
+        </collision>
+
+
+        <visual name="tabletop_visual">
+
+          <pose>
+            0 0 0.82 0 0 0
+          </pose>
+
+          <geometry>
+
+            <box>
+
+              <size>
+                1.60 0.90 0.14
+              </size>
+
+            </box>
+
+          </geometry>
+
+
+          <!-- WOOD -->
+
+          <material>
+
+            <ambient>
+              0.32 0.12 0.035 1
+            </ambient>
+
+            <diffuse>
+              0.55 0.22 0.06 1
+            </diffuse>
+
+            <specular>
+              0.12 0.06 0.02 1
+            </specular>
+
+          </material>
+
+        </visual>
+
+
+        <!-- =====================================================
+             LEFT FRONT LEG
+             ===================================================== -->
+
+        <collision name="leg_fl_collision">
+
+          <pose>
+            -0.65 -0.32 0.39 0 0 0
+          </pose>
+
+          <geometry>
+
+            <box>
+
+              <size>
+                0.14 0.14 0.78
+              </size>
+
+            </box>
+
+          </geometry>
+
+        </collision>
+
+
+        <visual name="leg_fl_visual">
+
+          <pose>
+            -0.65 -0.32 0.39 0 0 0
+          </pose>
+
+          <geometry>
+
+            <box>
+
+              <size>
+                0.14 0.14 0.78
+              </size>
+
+            </box>
+
+          </geometry>
+
+
+          <material>
+
+            <ambient>
+              0.25 0.08 0.02 1
+            </ambient>
+
+            <diffuse>
+              0.45 0.16 0.035 1
+            </diffuse>
+
+            <specular>
+              0.08 0.03 0.01 1
+            </specular>
+
+          </material>
+
+        </visual>
+
+
+        <!-- =====================================================
+             RIGHT FRONT LEG
+             ===================================================== -->
+
+        <collision name="leg_fr_collision">
+
+          <pose>
+            0.65 -0.32 0.39 0 0 0
+          </pose>
+
+          <geometry>
+
+            <box>
+
+              <size>
+                0.14 0.14 0.78
+              </size>
+
+            </box>
+
+          </geometry>
+
+        </collision>
+
+
+        <visual name="leg_fr_visual">
+
+          <pose>
+            0.65 -0.32 0.39 0 0 0
+          </pose>
+
+          <geometry>
+
+            <box>
+
+              <size>
+                0.14 0.14 0.78
+              </size>
+
+            </box>
+
+          </geometry>
+
+
+          <material>
+
+            <ambient>
+              0.25 0.08 0.02 1
+            </ambient>
+
+            <diffuse>
+              0.45 0.16 0.035 1
+            </diffuse>
+
+          </material>
+
+        </visual>
+
+
+
+        <collision name="leg_bl_collision">
+
+          <pose>
+            -0.65 0.32 0.39 0 0 0
+          </pose>
+
+          <geometry>
+
+            <box>
+
+              <size>
+                0.14 0.14 0.78
+              </size>
+
+            </box>
+
+          </geometry>
+
+        </collision>
+
+
+        <visual name="leg_bl_visual">
+
+          <pose>
+            -0.65 0.32 0.39 0 0 0
+          </pose>
+
+          <geometry>
+
+            <box>
+
+              <size>
+                0.14 0.14 0.78
+              </size>
+
+            </box>
+
+          </geometry>
+
+
+          <material>
+
+            <ambient>
+              0.25 0.08 0.02 1
+            </ambient>
+
+            <diffuse>
+              0.45 0.16 0.035 1
+            </diffuse>
+
+          </material>
+
+        </visual>
+
+
+
+
+        <collision name="leg_br_collision">
+
+          <pose>
+            0.65 0.32 0.39 0 0 0
+          </pose>
+
+          <geometry>
+
+            <box>
+
+              <size>
+                0.14 0.14 0.78
+              </size>
+
+            </box>
+
+          </geometry>
+
+        </collision>
+
+
+        <visual name="leg_br_visual">
+
+          <pose>
+            0.65 0.32 0.39 0 0 0
+          </pose>
+
+          <geometry>
+
+            <box>
+
+              <size>
+                0.14 0.14 0.78
+              </size>
+
+            </box>
+
+          </geometry>
+
+
+          <material>
+
+            <ambient>
+              0.25 0.08 0.02 1
+            </ambient>
+
+            <diffuse>
+              0.45 0.16 0.035 1
+            </diffuse>
+
+          </material>
+
+        </visual>
+
+
+       
+
+      </link>
+
+    </model>
+
+
+
+    <model name="fire_nozzle">
+
+  
+
+      <pose>
+        0 -1.20 0.12 0 0 0
+      </pose>
+
+      <static>true</static>
+
+
+      <link name="fire_source_link">
+
+
+
+
+        <visual name="nozzle_body">
+
+          <pose>
+            0 0 -0.15 0 0 0
+          </pose>
+
+          <geometry>
+
+            <cylinder>
+
+              <radius>
+                0.04
+              </radius>
+
+              <length>
+                0.30
+              </length>
+
+            </cylinder>
+
+          </geometry>
+
+
+          <material>
+
+            <ambient>
+              0.12 0.12 0.12 1
+            </ambient>
+
+            <diffuse>
+              0.25 0.25 0.25 1
+            </diffuse>
+
+            <specular>
+              0.35 0.35 0.35 1
+            </specular>
+
+          </material>
+
+        </visual>
+
+
+=
+
+        <visual name="nozzle_tip">
+
+          <geometry>
+
+            <sphere>
+
+              <radius>
+                0.028
+              </radius>
+
+            </sphere>
+
+          </geometry>
+
+
+          <material>
+
+            <ambient>
+              0.80 0.12 0.0 1
+            </ambient>
+
+            <diffuse>
+              1.0 0.25 0.0 1
+            </diffuse>
+
+            <emissive>
+              1.0 0.12 0.0 1
+            </emissive>
+
+          </material>
+
+        </visual>
+
+
+   
+
+        <inertial>
+
+          <mass>1.0</mass>
+
+          <inertia>
+
+            <ixx>0.01</ixx>
+            <iyy>0.01</iyy>
+            <izz>0.01</izz>
+
+          </inertia>
+
+        </inertial>
+
+
+
+        <particle_emitter
+            name="fire_core"
+            type="box">
+
+          <pose>
+            0 0 0 0 0 1.57079632679
+          </pose>
+
+          <emitting>true</emitting>
+
+          <size>
+            0.018 0.018 0.018
+          </size>
+
+          <particle_size>
+            0.045 0.045 0.045
+          </particle_size>
+
+          <lifetime>
+            0.42
+          </lifetime>
+
+          <min_velocity>
+            0.20
+          </min_velocity>
+
+          <max_velocity>
+            1.20
+          </max_velocity>
+
+          <scale_rate>
+            0.25
+          </scale_rate>
+
+          <rate>
+            220
+          </rate>
+
+          <color_start>
+            1.0 0.75 0.05 1.0
+          </color_start>
+
+          <color_end>
+            1.0 0.15 0.0 0.0
+          </color_end>
+
+          <material>
+
+            <ambient>
+              1.0 0.35 0.0 1
+            </ambient>
+
+            <diffuse>
+              1.0 0.55 0.02 1
+            </diffuse>
+
+            <specular>
+              0.0 0.0 0.0 1
+            </specular>
+
+            <emissive>
+              1.0 0.25 0.0 1
+            </emissive>
+
+          </material>
+
+        </particle_emitter>
+
+
+
+
+        <particle_emitter
+            name="fire_inner"
+            type="box">
+
+          <pose>
+            0 0 0 0 0 1.57079632679
+          </pose>
+
+          <emitting>true</emitting>
+
+          <size>
+            0.035 0.035 0.035
+          </size>
+
+          <particle_size>
+            0.065 0.065 0.065
+          </particle_size>
+
+          <lifetime>
+            0.55
+          </lifetime>
+
+          <min_velocity>
+            0.30
+          </min_velocity>
+
+          <max_velocity>
+            1.45
+          </max_velocity>
+
+          <scale_rate>
+            0.30
+          </scale_rate>
+
+          <rate>
+            160
+          </rate>
+
+          <color_start>
+            1.0 0.30 0.01 1.0
+          </color_start>
+
+          <color_end>
+            0.85 0.02 0.0 0.0
+          </color_end>
+
+          <material>
+
+            <ambient>
+              1.0 0.15 0.0 1
+            </ambient>
+
+            <diffuse>
+              1.0 0.30 0.0 1
+            </diffuse>
+
+            <specular>
+              0.0 0.0 0.0 1
+            </specular>
+
+            <emissive>
+              1.0 0.12 0.0 1
+            </emissive>
+
+          </material>
+
+        </particle_emitter>
+
+
+   
+        <particle_emitter
+            name="fire_outer"
+            type="box">
+
+          <pose>
+            0 0 0 0 0 1.57079632679
+          </pose>
+
+          <emitting>true</emitting>
+
+          <size>
+            0.060 0.060 0.060
+          </size>
+
+          <particle_size>
+            0.075 0.075 0.075
+          </particle_size>
+
+          <lifetime>
+            0.70
+          </lifetime>
+
+          <min_velocity>
+            0.35
+          </min_velocity>
+
+          <max_velocity>
+            1.65
+          </max_velocity>
+
+          <scale_rate>
+            0.35
+          </scale_rate>
+
+          <rate>
+            90
+          </rate>
+
+          <color_start>
+            0.80 0.03 0.0 1.0
+          </color_start>
+
+          <color_end>
+            0.20 0.0 0.0 0.0
+          </color_end>
+
+          <material>
+
+            <ambient>
+              0.55 0.01 0.0 1
+            </ambient>
+
+            <diffuse>
+              0.80 0.02 0.0 1
+            </diffuse>
+
+            <specular>
+              0.0 0.0 0.0 1
+            </specular>
+
+            <emissive>
+              0.65 0.02 0.0 1
+            </emissive>
+
+          </material>
+
+        </particle_emitter>
+
+
+    
+
+        <particle_emitter
+            name="smoke_emitter"
+            type="box">
+
+    
+
+          <pose>
+            0 0.65 0.25 0 -1.57079632679 0
+          </pose>
+
+          <emitting>true</emitting>
+
+          <size>
+            0.00005 0.00005 0.00005
+          </size>
+
+          <particle_size>
+            0.00005 0.00005 0.00005
+          </particle_size>
+
+          <lifetime>
+            26.5
+          </lifetime>
+
+          <min_velocity>
+            0.18
+          </min_velocity>
+
+          <max_velocity>
+            0.60
+          </max_velocity>
+
+          <rate>
+            40
+          </rate>
+
+          <scale_rate>
+            0.40
+          </scale_rate>
+
+          <color_start>
+            0.16 0.16 0.16 0.35
+          </color_start>
+
+          <color_end>
+            0.08 0.08 0.08 0.0
+          </color_end>
+
+          <material>
+
+            <ambient>
+              0.12 0.12 0.12 1
+            </ambient>
+
+            <diffuse>
+              0.18 0.18 0.18 1
+            </diffuse>
+
+            <specular>
+              0.0 0.0 0.0 1
+            </specular>
+
+            <emissive>
+              0.0 0.0 0.0 1
+            </emissive>
+
+          </material>
+
+        </particle_emitter>
+
+
+      </link>
+
+
+    
+
+      <plugin
+          filename="libFirePlugin.so"
+          name="gz::sim::systems::FirePlugin">
+
+
+        <fire_link>
+          fire_source_link
+        </fire_link>
+
+
+
+
+        <cone_half_angle>
+          40.0
+        </cone_half_angle>
+
+        <cone_max_range>
+          40.0
+        </cone_max_range>
+
+
+        <fire_color>
+          1.0 0.5 0.0 1.0
+        </fire_color>
+
+
+        <intensity>
+          2.2
+        </intensity>
+
+
+        <!-- Ray scanning -->
+
+        <num_rays>
+          2000
+        </num_rays>
+
+        <mark_spacing>
+          0.2
+        </mark_spacing>
+
+        <paint_interval_steps>
+          250
+        </paint_interval_steps>
+
+
+        <!-- Fire -->
+
+        <fire_topic>
+          /fire/trigger
+        </fire_topic>
+
+        <start_on>
+          true
+        </start_on>
+
+
+
+
+        <burnable_models>
+          burnable_table
+        </burnable_models>
+
+
+      
+
+        <ignition_heat>
+          0.5
+        </ignition_heat>
+
+
+    
+
+        <heat_rate>
+          0.5
+        </heat_rate>
+
+
+       
+
+        <damage_rate>
+          0.8
+        </damage_rate>
+
+
+
+        <destroy_damage>
+          1.0
+        </destroy_damage>
+
+
+ 
+
+        <destroy_after_burn>
+          true
+        </destroy_after_burn>
+
+
+      </plugin>
+
+    </model>
+
+  </world>
+
+</sdf>
