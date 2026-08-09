@@ -98,6 +98,10 @@ Example:
     <start_on>true</start_on>
 </plugin>
 
+
+
+---
+
 ## 🏗️ Building
 
 ### 1. Source ROS 2 Jazzy
@@ -115,6 +119,11 @@ colcon build \
 
 ### Source the Workspace
 source ~/fire_ws/install/setup.bash
+
+export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/fire_ws/install/gz_fire_plugin/lib:$GZ_SIM_SYSTEM_PLUGIN_PATH
+
+### run
+gz sim -r ~/fire_ws/src/gz_fire_plugin/src/gz_fire_plugin_demo/worlds/demo_cube_fire.sdf
 
 ## 🔥 Fire Simulation Behavior
 
