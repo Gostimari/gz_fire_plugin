@@ -138,4 +138,11 @@ The plugin simulates fire interaction with objects progressively rather than cau
 
 This progressive process allows objects to **ignite, burn, accumulate damage, and eventually be destroyed**, providing a more realistic fire interaction in Gazebo.
 
-  
+## 👥 Contributors
+
+This project was developed through **equal contributions** from:
+
+- **Aachal Sharma**
+- **Rahul Gupta**
+
+> **Aachal Sharma and Rahul Gupta contributed equally to the development of this project, including the fire simulation system, implementation, integration, testing, and demonstration.**
