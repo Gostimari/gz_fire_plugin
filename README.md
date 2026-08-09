@@ -125,33 +125,3 @@ export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/fire_ws/install/gz_fire_plugin/lib:$GZ_SI
 ### run
 gz sim -r ~/fire_ws/src/gz_fire_plugin/src/gz_fire_plugin_demo/worlds/demo_cube_fire.sdf
 
-## 🔥 Fire Simulation Behavior
-
-The plugin simulates fire interaction with objects progressively rather than causing immediate destruction.
-
-1. 🔥 **Fire Generation** — The fire source continuously produces flame, heat, and smoke effects.
-
-2. 🎯 **Fire Exposure** — Objects within the configured fire range and direction are evaluated for fire exposure.
-
-3. 🌡️ **Heat Transfer** — Exposed burnable objects gradually accumulate heat from the fire.
-
-4. 🔥 **Ignition** — When the accumulated heat reaches the configured ignition threshold, the object starts burning.
-
-5. 🪵 **Progressive Burning** — The object continues to burn while exposed to sufficient heat, rather than disappearing immediately.
-
-6. 📈 **Damage Accumulation** — Burning progressively increases the object's damage according to the configured damage rate.
-
-7. 🖤 **Charring / Burn Effects** — Burn and charring effects can be applied as the object's damage increases.
-
-8. 💥 **Destruction** — Once accumulated damage reaches the configured destruction threshold, the object is removed from the simulation.
-
-This progressive process allows objects to **ignite, burn, accumulate damage, and eventually be destroyed**, providing a more realistic fire interaction in Gazebo.
-
-## 👥 Contributors
-
-This project was developed through **equal contributions** from:
-
-- **Aachal Sharma**
-- **Rahul Gupta**
-
-> **Aachal Sharma and Rahul Gupta contributed equally to the development of this project, including the fire simulation system, implementation, integration, testing, and demonstration.**
