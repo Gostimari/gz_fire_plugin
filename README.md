@@ -279,7 +279,7 @@ This project was developed through equal contributions from:
 
 | Name          | GitHub                                               |
 |---------------|------------------------------------------------------|
-| Rahul Gupta   | [@topguns837](https://github.com/topguns837)         |
+| Rahul Gupta   | [@topguns837](https://github.com/Rahulcva)         |
 | Aachal Sharma | [@Aachal-Sharma](https://github.com/Aachal-Sharma)   |
 
 Both contributors contributed equally to the fire simulation system design, implementation, integration, testing, and demonstration.
